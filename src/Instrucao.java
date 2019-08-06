@@ -1,28 +1,33 @@
 public class Instrucao {
 	
-	public static final int OPCODE_ADD = 000000;
-	public static final int OPCODE_SUB = 000000;
-	public static final int OPCODE_AND = 000000;
-	public static final int OPCODE_OR  = 000000;
-	public static final int FUNCT_ADD  = 100000;
-	public static final int FUNCT_SUB  = 100010;
-	public static final int FUNCT_AND  = 100100;
-	public static final int FUNCT_OR   = 100101;
-	public static final int OPCODE_LI  = 001111;
-	public static final int OPCODE_LW  = 100011;
-	public static final int OPCODE_SW  = 101011;
-	public static final int OPCODE_BEQ = 000100;
-	public static final int OPCODE_BNE = 000101;
-	public static final int OPCODE_J   = 000010;
-	public static final int OPCODE_JR  = 001000;
+	@Override
+	public String toString() {
+		return "Instrucao [opcode=" + opcode + ", rs=" + rs + ", rt=" + rt + ", rd=" + rd + ", shamt=" + shamt
+				+ ", funct=" + funct + ", constante=" + constante + ", r=" + r + ", i=" + i + ", j=" + j + "]";
+	}
+	public static final int OPCODE_ADD = 0b000000;
+	public static final int OPCODE_SUB = 0b000000;
+	public static final int OPCODE_AND = 0b000000;
+	public static final int OPCODE_OR  = 0b000000;
+	public static final int FUNCT_ADD  = 0b100000;
+	public static final int FUNCT_SUB  = 0b100010;
+	public static final int FUNCT_AND  = 0b100100;
+	public static final int FUNCT_OR   = 0b100101;
+	public static final int OPCODE_LI  = 0b001111;
+	public static final int OPCODE_LW  = 0b100011;
+	public static final int OPCODE_SW  = 0b101011;
+	public static final int OPCODE_BEQ = 0b000100;
+	public static final int OPCODE_BNE = 0b000101;
+	public static final int OPCODE_J   = 0b000010;
+	public static final int OPCODE_JR  = 0b001000;
 
-	private int opcode = 0;
-	private int funct = 0;
-	private int rd = 0;
-	private int rs = 0;
-	private int rt = 0;
-	private int shamt = 0;
-	private int constante = 0;
+	private int opcode = 0b0;
+	private int rs = 0b0;
+	private int rt = 0b0;
+	private int rd = 0b0;
+	private int shamt = 0b0;
+	private int funct = 0b0;
+	private long constante = 0b0;
 	private boolean r = true;
 	private boolean i = false;
 	private boolean j = false;
@@ -63,10 +68,10 @@ public class Instrucao {
 	public void setShamt(int shamt) {
 		this.shamt = shamt;
 	}
-	public int getConstante() {
+	public long getConstante() {
 		return constante;
 	}
-	public void setConstante(int constante) {
+	public void setConstante(long constante) {
 		this.constante = constante;
 	}
 	public boolean isR() {

@@ -31,12 +31,12 @@ public class Main {
 		String shamt = instrucao_binaria.substring(21, 26);
 		String funct = instrucao_binaria.substring(26);
 		
-		instrucao.setOpcode(Integer.parseInt(op_code));
-		instrucao.setRs(Integer.parseInt(rs));
-		instrucao.setRt(Integer.parseInt(rt));
-		instrucao.setRd(Integer.parseInt(rd));
-		instrucao.setShamt(Integer.parseInt(shamt));
-		instrucao.setFunct(Integer.parseInt(funct));
+		instrucao.setOpcode(Integer.parseInt(op_code,2));
+		instrucao.setRs(Integer.parseInt(rs,2));
+		instrucao.setRt(Integer.parseInt(rt,2));
+		instrucao.setRd(Integer.parseInt(rd,2));
+		instrucao.setShamt(Integer.parseInt(shamt,2));
+		instrucao.setFunct(Integer.parseInt(funct,2));
 		instrucao.setR(true);
 		instrucao.setI(false);
 		instrucao.setJ(false);
@@ -48,10 +48,10 @@ public class Main {
 		String rt = instrucao_binaria.substring(11, 16); 
 		String constante = instrucao_binaria.substring(16);
 		
-		instrucao.setOpcode(Integer.parseInt(op_code));
-		instrucao.setRs(Integer.parseInt(rs));
-		instrucao.setRt(Integer.parseInt(rt));
-		instrucao.setConstante(Integer.parseInt(constante));
+		instrucao.setOpcode(Integer.parseInt(op_code,2));
+		instrucao.setRs(Integer.parseInt(rs,2));
+		instrucao.setRt(Integer.parseInt(rt,2));
+		instrucao.setConstante(Integer.parseInt(constante,2));
 		instrucao.setR(false);
 		instrucao.setI(true);
 		instrucao.setJ(false);
@@ -61,16 +61,16 @@ public class Main {
 		String op_code = instrucao_binaria.substring(0, 6);
 		String constante = instrucao_binaria.substring(6);
 		
-		instrucao.setOpcode(Integer.parseInt(op_code));
-		instrucao.setConstante(Integer.parseInt(constante));
+		instrucao.setOpcode(Integer.parseInt(op_code,2));
+		instrucao.setConstante(Integer.parseInt(constante,2));
 		instrucao.setR(false);
 		instrucao.setI(false);
 		instrucao.setJ(true);
 	}
 	
 	public void decode(String line, Instrucao instrucao) {
-		int aux = Integer.parseInt(line.substring(0, 6));
-				
+		int aux = Integer.parseInt(line.substring(0, 6),2);
+		
 		if(aux == Instrucao.OPCODE_ADD || aux == Instrucao.OPCODE_SUB ||aux == Instrucao.OPCODE_AND ||aux == Instrucao.OPCODE_OR ) {
 			decode_r(line, instrucao);
 		}else if(aux == Instrucao.OPCODE_LI || aux == Instrucao.OPCODE_LW ||aux == Instrucao.OPCODE_SW ||aux == Instrucao.OPCODE_BEQ ||aux == Instrucao.OPCODE_BNE) {
@@ -86,6 +86,8 @@ public class Main {
 		Instrucao instrucao = new Instrucao();
 		
 		decode(line, instrucao);
+		
+		System.out.println(instrucao);
 	}
 	
 	public void arquivo(String arquivo) throws Exception{
