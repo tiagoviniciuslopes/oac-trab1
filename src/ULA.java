@@ -1,5 +1,5 @@
 public class ULA {
-
+	
 	private int result;
 	
 	

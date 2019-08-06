@@ -1,4 +1,20 @@
 public class Instrucao {
+	
+	public static final int OPCODE_ADD = 000000;
+	public static final int OPCODE_SUB = 000000;
+	public static final int OPCODE_AND = 000000;
+	public static final int OPCODE_OR  = 000000;
+	public static final int FUNCT_ADD  = 100000;
+	public static final int FUNCT_SUB  = 100010;
+	public static final int FUNCT_AND  = 100100;
+	public static final int FUNCT_OR   = 100101;
+	public static final int OPCODE_LI  = 001111;
+	public static final int OPCODE_LW  = 100011;
+	public static final int OPCODE_SW  = 101011;
+	public static final int OPCODE_BEQ = 000100;
+	public static final int OPCODE_BNE = 000101;
+	public static final int OPCODE_J   = 000010;
+	public static final int OPCODE_JR  = 001000;
 
 	private int opcode = 0;
 	private int funct = 0;
