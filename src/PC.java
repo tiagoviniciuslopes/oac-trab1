@@ -21,4 +21,12 @@ public class PC {
 	public void reset() {
 		set(0);
 	}
+	
+	public void add() {
+		valor=+4;
+	}
+	
+	public void sub() {
+		valor=-4;
+	}
 }

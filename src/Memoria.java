@@ -10,15 +10,18 @@ public class Memoria {
 		memorias      = new int[5000];
 	}
 	
-	public int getRegistrador(int pos) {
+	public int getMemoria(int pos) {
 		return memorias[pos];
 	}
+	public String getMemoriaBin(int pos) {
+		return ""+ memorias[pos]+"";
+	}
 	
-	public int[] getRegistradores() {
+	public int[] getmemorias() {
 		return memorias;
 	}
 	
-	protected void setRegistrador(int pos, int valor) {
+	protected void setMemoria(int pos, int valor) {
 		marcar(pos);
 		memorias[pos] = valor;
 	}
@@ -33,4 +36,38 @@ public class Memoria {
 	public List<Integer> getMarcados() {
 		return new ArrayList<Integer>(marcados);
 	}
+	
+	public void setInstrucao(Instrucao instrucao) {
+		if(instrucao.isI()) {
+			setInstrucaoI(instrucao);
+		}else if(instrucao.isJ()) {
+			setInstrucaoJ(instrucao);
+		}else {
+			setInstrucaoR(instrucao);
+		}
+	}
+	
+	public void setInstrucaoR(Instrucao instrucao) {
+		setMemoria(0,Integer.parseInt("" + instrucao.getOpcode(),2));
+		setMemoria(1,Integer.parseInt("" + instrucao.getRs() + instrucao.getRt() + instrucao.getRd(),2));
+		setMemoria(2,Integer.parseInt("" + instrucao.getShamt(),2));
+		setMemoria(3,Integer.parseInt("" + instrucao.getFunct(),2));
+		
+	}
+	
+	public void setInstrucaoI(Instrucao instrucao) {
+		setMemoria(0,Integer.parseInt("" + instrucao.getOpcode(),2));
+		setMemoria(1,Integer.parseInt("" + instrucao.getRs(),2));
+		setMemoria(2,Integer.parseInt("" + instrucao.getRt(),2));
+		setMemoria(3,Integer.parseInt("" + instrucao.getConstante(),2));
+	}
+	
+	public void setInstrucaoJ(Instrucao instrucao) {
+		setMemoria(0,Integer.parseInt("" + instrucao.getOpcode(),2));
+		setMemoria(1,Integer.parseInt("" + instrucao.getConstante(),2));
+		setMemoria(2,Integer.parseInt("" + 0,2));
+		setMemoria(3,Integer.parseInt("" + 0,2));
+	}
+	
+	
 }
