@@ -16,17 +16,16 @@ public class Processador {
 		
 		if(inst.isR()) {
 			if(inst.getShamt() == Instrucao.FUNCT_ADD) {
-				ula._add(inst.getRs(), inst.getRt());
+				ula._add(reg.getRegistrador(inst.getRs()), reg.getRegistrador(inst.getRt()));
 			}else if(inst.getShamt() == Instrucao.FUNCT_SUB) {
-				ula._sub(inst.getRs(), inst.getRt());
+				ula._sub(reg.getRegistrador(inst.getRs()), reg.getRegistrador(inst.getRt()));
 			}else if(inst.getShamt() == Instrucao.FUNCT_AND) {
-				ula._and(inst.getRs(), inst.getRt());
+				ula._and(reg.getRegistrador(inst.getRs()), reg.getRegistrador(inst.getRt()));
 			}else {
-				ula._or(inst.getRs(), inst.getRt());
+				ula._or(reg.getRegistrador(inst.getRs()), reg.getRegistrador(inst.getRt()));
 			}
+			reg.setRegistrador(inst.getRd(), ula.getResult());
 			
-			int result = ula.getResult();
-			//??
 		}else if(inst.isI()) {
 			
 		}else {
