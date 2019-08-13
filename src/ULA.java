@@ -1,6 +1,6 @@
 public class ULA {
 	
-	private int result;
+	private int result = 0;
 	
 	
 	public int getResult() {
@@ -13,14 +13,15 @@ public class ULA {
 	}
 
 
-	public void setOperation(String op , int rs, int rt) {
-		if(op.equals("ADD")) {
+	public void setOperation(int funct , int rs, int rt) {
+		
+		if(funct == Instrucao.FUNCT_ADD) {
 			_add(rs, rt);
-		}else if(op.equals("SUB")) {
+		}else if(funct == Instrucao.FUNCT_SUB) {
 			_sub(rs, rt);
-		}else if(op.equals("AND")) {
+		}else if(funct == Instrucao.FUNCT_AND) {
 			_and(rs, rt);
-		}else { //OR
+		}else {
 			_or(rs, rt);
 		}
 	}

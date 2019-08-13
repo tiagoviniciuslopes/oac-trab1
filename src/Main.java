@@ -27,11 +27,10 @@ public class Main {
 		String line = reader.readLine().trim();
 		Instrucao instrucao = new Instrucao(line);
 		Memoria memoria = new Memoria();
-		memoria.setInstrucao(instrucao);
+		memoria.setInstrucao(line);
 		
-
+		Processador p = new Processador(memoria);
 		
-		System.out.println(instrucao);
 	}
 	
 	public void arquivo(String arquivo) throws Exception{
