@@ -23,7 +23,7 @@ public class PC {
 	}
 	
 	public void add() {
-		valor=+4;
+		valor+=4;
 	}
 	
 	public void sub() {

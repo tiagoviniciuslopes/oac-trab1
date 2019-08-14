@@ -4,9 +4,11 @@ import java.util.List;
 public class Memoria {
 	private int[] memorias = new int[5000];
 	private List<Integer> marcados;
+	private int pos;
 	
 	public Memoria() {
 		marcados = new ArrayList<Integer>();
+		pos = 0;
 	}
 	
 	public void reset() {
@@ -25,9 +27,15 @@ public class Memoria {
 		return memorias;
 	}
 	
-	protected void setMemoria(int pos, int valor) {
+	public void setMemoria(int pos, int valor) {
 		marcar(pos);
 		memorias[pos] = valor;
+	}
+	
+	public void setMemoria( int valor) {
+		marcar(this.pos);
+		memorias[this.pos] = valor;
+		pos++;
 	}
 	
 	private void marcar(int pos) {
@@ -47,10 +55,10 @@ public class Memoria {
 		String mem2 = instrucao_binaria.substring(16, 24); 
 		String mem3 = instrucao_binaria.substring(24);
 		
-		setMemoria(0,Integer.parseInt(mem0, 2));
-		setMemoria(1,Integer.parseInt(mem1, 2));
-		setMemoria(2,Integer.parseInt(mem2, 2));
-		setMemoria(3,Integer.parseInt(mem3, 2));
+		setMemoria(Integer.parseInt(mem0, 2));
+		setMemoria(Integer.parseInt(mem1, 2));
+		setMemoria(Integer.parseInt(mem2, 2));
+		setMemoria(Integer.parseInt(mem3, 2));
 	}
 	
 	

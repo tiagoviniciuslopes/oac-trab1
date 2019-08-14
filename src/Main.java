@@ -6,20 +6,12 @@ public class Main {
 
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
-		System.out.println("1 - Dados via teclado");
-		System.out.println("2 - Dados via arquivo");
-		
+		System.out.println("Entre com a instrucao binaria de aperte enter");
+
 		Main m = new Main();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		
-		String op = reader.readLine().trim();
-		
-		if(op.equals("1")) {
-			m.teclado();
-		}else {
-			System.out.println("Digite o nome do arquivo");
-			m.arquivo(reader.readLine().trim());
-		}
+
+		m.teclado();
 	}
 	
 	public void teclado() throws Exception{
@@ -28,17 +20,24 @@ public class Main {
 		Instrucao instrucao = new Instrucao(line);
 		Memoria memoria = new Memoria();
 		memoria.setInstrucao(line);
-		
 		Processador p = new Processador(memoria);
+		//00000000111010000100100000100000
+		//00111100000100100000000000001000
+		
+		while(true) {
+			memoria.setInstrucao(reader.readLine().trim());
+			p.ciclo();
+		}
+			
 		
 	}
 	
-	public void arquivo(String arquivo) throws Exception{
+	/*public void arquivo(String arquivo) throws Exception{
 		BufferedReader br = new BufferedReader(new FileReader(arquivo));
 		String line = br.readLine();
 		Instrucao instrucao = new Instrucao(line);
 		
 		br.close();
 		
-	}
+	}*/
 }

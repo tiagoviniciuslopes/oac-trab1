@@ -97,6 +97,14 @@ public class Instrucao {
 		this.j = j;
 	}
 	
+	public int getConstanteReg() {
+		String cons = Integer.toBinaryString(getConstante());
+		cons = ("00000000000000000000000000" + cons).substring(cons.length());	
+		
+		return Integer.parseInt((cons.substring(0, 5)),2);
+		
+	}
+	
 	public void decode_r(String instrucao_binaria, Instrucao instrucao) {
 		String op_code = instrucao_binaria.substring(0, 6);
 		String rs = instrucao_binaria.substring(6, 11);

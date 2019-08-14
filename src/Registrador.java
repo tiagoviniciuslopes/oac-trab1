@@ -11,12 +11,10 @@ public class Registrador {
 	
 	public Registrador() {
 		marcados = new ArrayList<Integer>();
-		/*registradores[7] = 0b101; TESTES
-		registradores[8] = 0b111;
-		registradores[9] = 0b0;
-		marcar(7);
-		marcar(8);
-		marcar(9);*/ 
+		/*setRegistrador(7,0b101);
+		setRegistrador(8,0b111);
+		setRegistrador(9,0b0);
+		setRegistrador(16,16);*/
 	}
 	
 	public void setRegistradores(int l1, int l2, int e) {
