@@ -49,11 +49,11 @@ public class Processador {
 			
 		}else {
 			if(inst.getOpcode() == Instrucao.OPCODE_J) {
-				pc.set(inst.getConstante() + pc.get());
+				pc.set(inst.getConstante()*4);
 				
 			}else if(inst.getOpcode() == Instrucao.OPCODE_JR) {
 				reg.setRegistradores(inst.getConstanteReg(), 0, 0);
-				pc.set(reg.ler1() + pc.get());
+				pc.set(reg.ler1()*4);
 				
 			}
 		}
